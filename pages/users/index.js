@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const index = ({ users }) => {
   // for data load in React
@@ -7,6 +8,16 @@ const index = ({ users }) => {
   return (
     <div>
       <h2>This is Users main page: {users.length}</h2>
+      {users.map((user) => (
+        <div key={user.id}>
+          <h4>
+            Name: {user.name}
+            <Link href={`/users/${user.id}`}>
+              <button>explore</button>
+            </Link>
+          </h4>
+        </div>
+      ))}
     </div>
   );
 };
